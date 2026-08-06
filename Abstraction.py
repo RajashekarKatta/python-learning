@@ -103,4 +103,127 @@ dog = Dog()
 print(dog.move())
 
 
+# Example for abstract method
+from abc import ABC, abstractmethod
+class PaymentGateway(ABC):
+    @abstractmethod
+    def process_payment(self, amount):
+        pass
+
+    def validate_payment(self, amount):
+        if amount <= 0:
+            raise ValueError("Amount must be grreater than zero.")
+        else:
+            print(f"Validating Pyment of {amount}...")
+
+class CreditCardPayment(PaymentGateway):
+    def process_payment(self, amount):
+        print(f"Processing Credit card payment of {amount}")
+        print("payment Successful via creadit card")
+
+class UPIPayment(PaymentGateway):
+    def process_payment(self, amount):
+        print(f"Processing UPI payment of {amount}")
+        print("payment successful via UPI")
+
+class NetBankingPayment(PaymentGateway):
+    def process_payment(self, amount):
+        print(f"Processing Net Banking Payment of {amount}")
+        print("Payment successful via Net Banking")
+
+class Order:
+    def __init__(self, amount, payment_gateway):
+        self.amount = amount
+        self.payment_gateway = payment_gateway
+
+    def process_order(self):
+        print("Order confirmed! Processing your payment...\n")
+        self.payment_gateway.process_payment(self.amount)
+        print("\nThank you for your purchase!\n")
+
+# Example usage:
+if __name__ == "__main__":
+    # Example 1: Credit Card Payment
+    order1 = Order(1500, CreditCardPayment())
+    order1.payment_gateway.validate_payment(order1.amount)  # Validate payment before processing
+    order1.process_order()
+
+    # Example 2: UPI Payment
+    order2 = Order(999, UPIPayment())
+    order2.payment_gateway.validate_payment(order2.amount)
+    order2.process_order()
+
+    # Example 3: Net Banking Payment
+    order3 = Order(2450, NetBankingPayment())
+    order3.payment_gateway.validate_payment(order3.amount)
+    order3.process_order()
+
+
+
+
+# Another Real Time Example
+from abc import ABC, abstractmethod
+class Employee(ABC):
+
+    def __init__(self, name, eid):
+        self.name = name
+        self.eid = eid
+
+    @abstractmethod
+    def calculate_salary(self):
+        pass
+
+class FullTimeEmployee(Employee):
+    def __init__(self, name, eid, monthly_salary, bonus):
+        super().__init__(name, eid)
+        self.monthly_salary = monthly_salary
+        self.bonus = bonus
+
+    def calculate_salary(self):
+        total_salary = self.monthly_salary + self.bonus
+        print(f"Full-Time Employee: {self.name}, ID:{self.eid}, bonus:{self.bonus}, Total_salary: {total_salary}")
+        return total_salary
+
+
+class PartTimeEmployee(Employee):
+    def __init__(self, name, eid, hourly_rate, hours_worked):
+        super().__init__(name, eid)
+        self.hourly_rate = hourly_rate
+        self.hours_worked = hours_worked
+
+    def calculate_salary(self):
+        total_salary = self.hourly_rate * self.hours_worked
+        print(f"Part Time Employee: {self.name}, ID: {self.eid}, hourly_rate: {self.hourly_rate}, hours_works: {self.hours_worked}, total_salary: {total_salary}")
+        return total_salary
+
+
+class Contractor(Employee):
+    def __init__(self, name, eid, project_fee):
+        super().__init__(name, eid)
+        self.project_fee = project_fee
+
+    def calculate_salary(self):
+        total_salary = self.project_fee
+        print(f"Contractor: {self.name}, ID: {self.eid}, project_fee: {self.project_fee}, total_salary: {total_salary}")
+        return total_salary
+
+def run_payroll(employees):
+    total_expense = 0
+    for emp in employees:
+        salary = emp.calculate_salary()
+        total_expense += salary
+
+    print(f"\n Total Monthly Expense:{total_expense}")
+
+    
+# Example usage:
+if __name__ == "__main__":
+    emp1 = FullTimeEmployee("Alice", 101, 10000, 2000)
+    emp2 = PartTimeEmployee("Bob", 102, 100, 80)
+    emp3 = Contractor("Charlie", 130, 7500)
+
+    all_employees = [emp1, emp2, emp3]
+    run_payroll(all_employees)
+
+    
 
