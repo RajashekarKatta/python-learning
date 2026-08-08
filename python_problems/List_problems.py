@@ -67,3 +67,47 @@ print(s.remove_duplicate(numbers))      # output is [1, 2, 3, 4, 5]
 
 
 print("\n\n\n")
+
+# Problem 5: Find all even numbers in a list numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+def even_numbers(numbers):
+    evens = []
+    for num in numbers:
+        if num % 2 == 0:
+            evens.append(num)
+    return evens
+numbers = [1, 2, 3, 4, 5, 6]
+print(even_numbers(numbers))
+
+
+print("\n\n\n")
+
+
+# Count elements in a list
+def count_elements(numbers):
+    count = 0
+    for i in range(len(numbers)):
+        count += 1
+    return f'numbers of elements: {count}'
+numbers = [1, 2, 3, 4, 5, 6]    
+print(count_elements(numbers))
+
+print("\n\n\n")
+
+
+
+# Check if an target element exists in a list
+class Solution:
+    def check_target_element(self, numbers, target):
+        for num in numbers:
+            if num == target:
+                return True
+        return False
+
+s = Solution()
+numbers = [10, 20, 30, 40, 50]
+print(s.check_target_element(numbers))
+
+print("\n\n\n")
+
+
+
