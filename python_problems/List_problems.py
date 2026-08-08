@@ -241,3 +241,182 @@ print(s.second_largest_element(nums))
 print("\n\n\n")
 
 
+# Find second smallest element
+class Solution:
+    def second_smallest_element(self, nums):
+        smallest = float('inf')
+        second_smallest = float('inf')
+        for num in nums:
+            if num < smallest:
+                second_smallest = smallest
+                smallest = num
+            elif num < second_smallest and num != smallest:
+                second_smallest = num
+                
+        return second_smallest
+        
+s = Solution()
+numbers = [10, 20, 4, 45, 99]
+print(s.second_smallest_element(numbers))
+
+print("\n\n\n")
+
+
+# Find all pairs with a given sum numbers = [1,2,3,4,5] target = 5
+class Solution:
+    def pair_sum(self, numbers, target):
+        pairs = []
+        for i in range(len(numbers)):
+            for j in range(i+1, len(numbers)):
+                if numbers[i] + numbers[j] == target:
+                    pairs.append([i, j])
+        return pairs
+s = Solution()
+numbers = [1,2,3,4,5]
+target = 5
+print(s.pair_sum(numbers, target))
+
+
+# Finding all Pairs using Hash map
+class Solution:
+    def find_all_pairs(self, numbers, target):
+        seen = set()
+        for num in numbers:
+            compliment = target - num
+            if compliment in seen:
+                print (compliment, num)
+            seen.add(num)
+
+s = Solution()
+numbers = [1,2,3,4,5]
+s.find_all_pairs(numbers, 5)
+
+print("\n")
+# Finding all Pairs with sorted list given
+class Solution:
+    def find_pairs(self, nums, target):
+        left, right = 0, len(nums) -1
+        while left < right:
+            total = nums[left] + nums[right]
+            if total == target:
+                print(nums[left], nums[right])
+                left += 1
+                right -= 1
+            elif total < target:
+                left += 1
+            else:
+                right -= 1
+
+s = Solution()
+nums = [1,2,3,4,5]
+s.find_pairs(nums, 5)
+
+print("\n")
+
+##### Right Rotation by k positions
+class Solution:
+    def right_rotate(self, nums, k):
+        n = len(nums)
+        k = k % n
+        def revers(left, right):
+            while left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+        revers(0, n-1)
+        revers(0, k-1)
+        revers(k, n-1)
+        return nums
+s = Solution()
+nums = [1,2,3,4,5]
+print(s.right_rotate(nums, 2))
+
+print("\n")
+
+
+# left rotation
+class Solution:
+    def left_rotation(self, nums, k):
+        n = len(nums)
+        k = k % n
+        def revers(left, right):
+            while left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+        revers(0, k-1)
+        revers(k, n-1)
+        revers(0, n-1)
+        return nums
+s = Solution()
+nums = [1,2,3,4,5]
+print(s.left_rotation(nums, 2))
+
+print("\n")
+
+
+# Merge two sorted lists
+# Using Two Pointers (Classic Method)
+def merge_sorted_lists(list1, list2):
+    merged = []
+    i = j = 0
+    while i < len(list1) and j < len(list2):
+        if list1[i] <= list2[j]:
+            merged.append(list1[i])
+            i += 1
+        else:
+            merged.append(list2[j])
+            j += 1
+    merged.extend(list1[i:])
+    merged.extend(list2[j:])
+    return merged
+    
+list1 = [1, 3, 5, 7]
+list2 = [2, 4, 6, 8]
+print(merge_sorted_lists(list1, list2))
+
+print("\n")
+
+class Solution:
+    def finding_duplicates(self, numbers):
+        duplicate = []
+        for num in set(numbers):
+            if numbers.count(num) > 1:
+                duplicate.append(num)
+        return duplicate
+s = Solution()
+numbers = [1, 2, 2, 3, 3, 3, 4]
+print(s.finding_duplicates(numbers))
+
+print("\n")
+
+# Another way to Find Duplicate Numbers
+class Solution:
+    def find_duplicates(self, arr):
+        duplicates = []
+        seen = set()
+        for num in arr:
+            if num in seen:
+                duplicates.append(num)
+            seen.add(num)
+        return duplicates
+
+s = Solution()
+numbers = [1, 2, 2, 3, 3, 3, 4]
+print(s.find_duplicates(numbers))
+
+print("\n")
+
+# Write a Python program to generate the next 15 leap years starting from a given year. Populate the leap years into a list and display the list. 
+class Solution():
+    def leap_years(self, given_year):
+        leap_years = []
+        current_year = given_year
+        while len(leap_years) < 15:
+            if (current_year % 4 == 0 and current_year % 100 != 0) or current_year % 400 == 0:
+                leap_years.append(current_year)
+            current_year += 1
+        return leap_years
+
+s = Solution()
+print(s.leap_years(2002))
