@@ -4,12 +4,13 @@ class Solution:
     def guess_number(self, startrange, endrange):
         if startrange > endrange:
             return True
+          
         mid = (startrange + endrange)//2
         print(f"Is the number {mid}? (Y/N): ", end="")
         user = input().strip()
 
         if user in ("y", "Y"):
-            print("Congratulation Geek! Successfully Guessed Number.")
+            print("Congratulation User! Successfully Guessed Number.")
             return False
 
         elif user in ("N", "n"):
