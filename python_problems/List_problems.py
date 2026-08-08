@@ -82,6 +82,19 @@ print(even_numbers(numbers))
 print("\n\n\n")
 
 
+# Find odd numbers = [1,2,3,4,5,6,7,8,9]
+def finding_odd_numbers(numbers):
+    odd = []
+    for num in numbers:
+        if num % 2 != 0:
+            odd.append(num)
+    return odd
+numbers = [1,2,3,4,5,6,7,8,9]
+print(finding_odd_numbers(numbers))
+
+print("\n\n\n")
+
+
 # Count elements in a list
 def count_elements(numbers):
     count = 0
@@ -105,9 +118,126 @@ class Solution:
 
 s = Solution()
 numbers = [10, 20, 30, 40, 50]
-print(s.check_target_element(numbers))
+print(s.check_target_element(numbers, 40))
 
 print("\n\n\n")
 
+
+# Slice a list witout using Built in method
+class Solution:
+    def slicing_list(self, numbers, start, stop):
+        result = []
+        for i in range(len(numbers)):
+            if i >= start and i < stop:
+                result.append(numbers[i])
+        return result
+
+s = Solution()
+numbers = [10, 20, 30, 40, 50, 60, 70, 80]
+start = 2
+stop = 6
+print(s.slicing_list(numbers, start,stop))
+
+
+print("\n\n\n")
+# Flatten a nested list convert it into a list
+class Solution:
+    def flattern_list(self, numbers):
+        result = []
+        for num in numbers:
+            if isinstance(num, list):
+                result.extend(self.flattern_list(num))
+            else:
+                result.append(num)
+        return result
+s = Solution()
+numbers = [1, [2, [3, 4], 5], [6, 7]]
+print(s.flattern_list(numbers))
+
+print("\n\n\n")
+
+
+# Multiply each element by 2
+class Solution:
+    def multiply_each_item(self, numbers):
+        result = []
+        for num in numbers:
+            result.append(num * 2)
+        return result
+
+s = Solution()
+numbers = [1, 2, 3, 4, 5, 6, 7]
+print(s.multiply_each_item(numbers))
+
+print("\n\n\n")
+
+
+# Find index of an element Problem: Find index of 30 in [10,20,30,40].
+class Solution:
+    def index_of_ele(self,numbers, target):
+        result = []
+        for i in range(len(numbers)):
+            if numbers[i] == target:
+                result.append(i)
+        return f'index of an {target} element is {result}'
+s = Solution()
+numbers = [10,20,30,40]
+target = 30
+print(s.index_of_ele(numbers, target))
+
+print("\n\n\n")
+
+
+# Count occurrences Problem: [1,2,2,3,2,4] → count 2
+class Solution:
+    def count_occurrence(self, numbers, target):
+        count = 0
+        for num in numbers:
+            if num == target:
+                count += 1
+        return f'Count of 2 is: {count}'
+s = Solution()
+numbers = [1,2,2,3,2,4]
+num = 2
+print(s.count_occurrence(numbers, num))    
+
+
+print("\n\n\n")
+# Finding Count Using Dictionary
+class Solution:
+    def freq_count(self, nums):
+        freq = {}
+        for num in nums:
+            freq[num] = freq.get(num, 0) + 1
+        for i in freq:
+            if freq[i] > 1:
+                return freq[i]
+s = Solution()
+nums = [1,2,2,3,2,4]
+print(s.freq_count(nums))
+
+
+print("\n\n\n")
+
+
+# Find Second Largest number
+class Solution:
+    def second_largest_element(self, nums):
+        largest = float('-inf')
+        second_largest = float('-inf')
+        for num in nums:
+            if num > largest:
+                second_largest = largest
+                largest = num
+            elif num < second_largest and num != largest:
+                second_largest = num
+        return second_largest
+
+s = Solution()
+nums = [10, 20, 4, 45, 99, 99]
+print(s.second_largest_element(nums))
+
+
+print("\n\n\n")
 
 
