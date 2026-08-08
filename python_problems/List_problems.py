@@ -48,3 +48,22 @@ print(s.reversing_a_list(numbers))     # Reverse of a List -> [5, 4, 3, 2, 1]
 
 
 print("\n\n\n")
+
+
+# Problem 4: Remove duplicates from a list numbers = [1, 2, 2, 3, 4, 4, 5]
+class Solution:
+    def remove_duplicate(self, numbers):
+        i = 0
+        for j in range(len(numbers)):
+            if numbers[j] != numbers[i]:
+                i += 1
+                numbers[i] = numbers[j]
+        return numbers[:i+1]
+
+s = Solution()
+numbers = [1, 2, 2, 3, 4, 4, 5]
+print(s.remove_duplicate(numbers))      # output is [1, 2, 3, 4, 5]
+
+
+
+print("\n\n\n")
