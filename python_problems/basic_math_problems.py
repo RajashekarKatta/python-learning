@@ -95,4 +95,75 @@ class Solution:
 s = Solution()
 print(s.factorial_recursion(5))
 
+print("\n")
+
+# Reverse a number
+class Solution:
+    def reverse_number(self, n):
+        rev = 0
+        while n > 0:
+            rev = rev * 10 + (n % 10)
+            n //= 10
+        return rev
+s = Solution()
+print(s.reverse_number(1234))
+
+
+# reverese a number
+class Solution:
+    def rev_number(self, n):
+        rev = 0
+        sign = -1 if n < 0 else 1
+        n = abs(n)
+        while n > 0:
+            rev = rev * 10 + n % 10
+            n //= 10
+        rev *= sign
+
+        if rev < -2**31 or rev > 2**31 - 1:
+            return 0
+        return rev
+        
+s = Solution() 
+s.rev_number(-1234)
+
+print("\n")
+
+#GCD (HCF) – Euclidean Algorithm
+class Solution:
+    def gcd(self, a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+s = Solution()
+s.gcd(48, 18)
+
+print("\n")
+
+# LCM of Two Numbers
+class Solution:
+    def find_gcd(self, a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+    def lcm(self, a, b):
+        return (a * b) // self.find_gcd(a, b)
+
+s = Solution()
+s.lcm(4,6)
+
+print("\n")
+
+# Count Digits
+class Solution:
+    def count_digit(self, n):
+        count = 0
+        while n > 0:
+            count += 1
+            n //= 10
+        return count
+s = Solution()
+s.count_digit(12345)
+print("\n")
+
             
