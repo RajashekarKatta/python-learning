@@ -198,3 +198,39 @@ class Solution:
 
 s = Solution()
 print(s.automorphic_number(25))
+
+print("\n")
+# Fibonacci Series
+class Solution:
+    def fibonacci(self, n):
+        a, b = 0, 1
+        for _ in range(2, n+1):
+            a, b = b, a+b
+        return b
+s = Solution()
+print(s.fibonacci(8))
+
+
+# Fibonacci Series the first n numbers
+class Solution:
+    def fibonacci_series(self, n):
+        a, b = 0, 1
+        
+        for _ in range(n):
+            print(a, end=' ')
+            a, b = b, a+b
+s = Solution()
+s.fibonacci_series(8)
+
+
+print("\n")
+# fibonacci series --> upto n 
+class Solution:
+    def fibo_series(self, n):
+        a, b = 0, 1
+        while a <= n:
+            print(a, end=' ')
+            a, b = b, a + b
+        
+s = Solution()
+s.fibo_series(10)
