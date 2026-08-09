@@ -166,4 +166,35 @@ s = Solution()
 s.count_digit(12345)
 print("\n")
 
-            
+
+
+# Armstrong Number
+class Solution:
+    def Armstrong_number(self, n):
+        num = n
+        power = len(str(n))
+        total = 0         
+        while n > 0:
+            digit = n % 10
+            total += digit ** power
+            n //= 10
+        return total == num
+           
+s = Solution()
+print(s.Armstrong_number(153)) 
+
+
+
+# Automorphic Number:
+class Solution:
+    def automorphic_number(self, n):
+        square = n * n
+        while n > 0:
+            if n % 10 != square % 10:
+                return False
+            n //= 10
+            square //= 10
+        return True
+
+s = Solution()
+print(s.automorphic_number(25))
