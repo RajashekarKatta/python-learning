@@ -234,3 +234,65 @@ class Solution:
         
 s = Solution()
 s.fibo_series(10)
+
+print("\n")
+
+# Check Palindrome
+class Solution:
+    def check_palindrome(self, n):
+        if n < 0:
+            return False
+        num = n
+        rev = 0
+        while n > 0:
+            rev = rev * 10 + (n % 10)
+            n //= 10
+        return rev == num
+s = Solution()
+print(s.check_palindrome(121))
+
+print("\n")
+
+
+# Converting Binary to Decimal
+class Solution:
+    def binary_to_decimal(self, n):
+        decimal = 0
+        power = 0
+        while n > 0:
+            decimal += (n%10)*(2 ** power)
+            n //= 10
+            power += 1
+        return decimal
+
+s = Solution()
+print(s.binary_to_decimal(1011))
+
+# Converting Decimal to Binary
+class Solution:
+    def convert_to_binary(self, n):
+        binary = ""
+        if n == 0:
+            return "0"
+        while n > 0:
+            binary = str(n % 2) + binary
+            n //= 2
+        return binary
+
+s = Solution()
+print(s.convert_to_binary(23))
+print("\n")
+
+
+# Finding missing number in given sequence numbers
+class Solution:
+    def missingNumber(self, nums):
+        n = len(nums)
+        
+        expected_sum = n * (n + 1) // 2
+        actual_sum = sum(nums)
+        
+        return expected_sum - actual_sum
+
+s = Solution()
+print(s.missingNumber([3, 0, 1]))  # 2
