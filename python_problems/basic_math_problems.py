@@ -32,3 +32,42 @@ nums = [1, 2, 3, 4, 5, 10, 11, 15]
 print(s.find_primes(nums))
 
 print("\n")
+
+
+# Printing all Prime Numbers up to N
+class Solution:
+    def Prime_numbers_upto_n(self, n):
+        for num in range(2, n + 1):
+            is_prime = True
+            for i in range(2, int(num ** 0.5)+1):
+                if num % i == 0:
+                    is_prime = False
+                    break
+            if is_prime:
+                print(num, end=" ")
+s = Solution()
+s.Prime_numbers_upto_n(50)
+
+print("\n")
+# generating first N prime numbers
+class Solution:
+    def first_n_primes(self, n):
+        count = 0
+        num = 2
+        while count < n:
+            is_prime = True
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    is_prime = False
+                    break
+            if is_prime:
+                print(num, end=" ")
+                count += 1
+            num += 1
+
+s = Solution()
+s.first_n_primes(10)
+
+
+
+            
