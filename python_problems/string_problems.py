@@ -7,5 +7,45 @@ class Solution:
             length += 1
         return length
 
-s = Solution()
-print(s.length_str("Gemini"))
+c = Solution()
+print(c.length_str("Gemini"))
+
+
+# # Count Frequency of Each Character problem
+class Solution:
+    def character_count(self, s):
+        freq = {}
+        for char in s:
+            freq[char] = freq.get(char, 0) + 1
+        return freq
+c = Solution()
+print(c.character_count("banana"))
+
+
+# Fing the first Non-repeated character
+class Solution:
+    def non_repeted_char(self, s):
+        freq = {}
+        for char in s:
+            freq[char] = freq.get(char, 0) + 1
+        for char in freq:
+            if freq[char] == 1:
+                return char
+c = Solution()
+print(c.non_repeted_char("rajashekar"))
+
+
+# Find the second Non repeateed character
+class Solution:
+    def second_non_repeated_char(self, s):
+        freq = {}
+        for char in s:
+            freq[char] = freq.get(char, 0) + 1
+        non_repeated_chars = []
+        for char in freq:
+            if freq[char] == 1:
+                non_repeated_chars.append(char)
+        return non_repeated_chars[1]
+
+c = Solution()
+print(c.second_non_repeated_char("rajashekar"))
