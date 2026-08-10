@@ -97,3 +97,31 @@ class Solution:
         return result
 c = Solution()
 print(c.replace("a1b2c3"))
+
+# Check if a string is a Palindrome
+class Solution:
+    def check_palindrome(self, s):
+        left, right = 0, len(s) -1
+        while left < right:
+            if s[left] != s[right]:
+                return False
+            left += 1
+            right -= 1
+        return True
+c = Solution()
+print(c.check_palindrome("malayalam"))
+
+
+
+# Reverseing a string
+class Solution:
+    def revers_string(self, s):
+        s = list(s)
+        left, right = 0, len(s) - 1
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left += 1
+            right -= 1
+        return ''.join(s)
+c = Solution()
+print(c.revers_string("king"))
