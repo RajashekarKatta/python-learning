@@ -198,3 +198,67 @@ class Solution:
         return True
 s = Solution()
 print(s.only_digits("12345"))
+
+
+# Remove spaces from a string
+class Solution:
+    def remove_spaces(self, s):
+        result = []
+        for char in s:
+            if char != ' ':
+                result.append(char)
+        return '' .join(result)
+s = Solution()
+print(s.remove_spaces("hello world welcome"))
+
+
+# Find the subsequence of the given string
+class Solution:
+    def find_subsequence(self, s1, s2):
+        result = []
+        j = 0
+        for char in s1:
+            if j < len(s2) and char == s2[j]:
+                result.append(char)
+                j += 1
+        return ''.join(result)
+
+s = Solution()
+print(s.find_subsequence("ABCDE","ACE"))
+
+# Find Subsequence Characters Between Two Strings
+class Solution:
+    def is_substring(self, substring, main_string):
+        it = iter(main_string)
+        for char in substring:
+            if char not in it:
+                return False
+        return True
+
+    def find_subsquence(self, s1, s2):
+        longest_match = ''
+        for i in range(len(s1)):
+            for j in range(i , len(s1)):
+                substring = s1[i:j+1]
+                if self.is_substring(substring, s2) and len(substring) > len(longest_match):
+                    longest_match = substring
+        return longest_match
+s = Solution()
+print(s.find_subsquence("Python", "typhoon"))
+
+
+class Solution:
+    def check_substring(self, s , sub):
+        n = len(s)
+        m = len(sub)
+        for i in range(n - m + 1):
+            j = 0
+            while j < m and s[i+j] == sub[j]:
+                j += 1
+
+            if j == m:
+                return True
+        return False
+
+c = Solution()
+print(c.check_substring("python", "thon"))
