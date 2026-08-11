@@ -158,3 +158,43 @@ class Solution:
         return result
 sol = Solution()
 print(sol.encode_string("aaabbcccd"))
+
+
+# Check if two strings are anagrams  O(n), O(1)
+class Solution:
+    def check_anagrams(self, s1, s2):
+        if len(s1) != len(s2):
+            return False
+        freq = [0] * 26
+        for i in range(len(s1)):
+            freq[ord(s1[i]) - ord('a')] += 1
+            freq[ord(s2[i]) - ord('a')] -= 1
+        return all(c == 0 for c in freq)
+s = Solution()
+print(s.check_anagrams("listen", "silent"))
+
+
+# Remove duplicate characters
+class Solution:
+    def remove_duplicates(self, s):
+        seen = set()
+        result = []
+        for char in s:
+            if char not in seen:
+                result.append(char)
+                seen.add(char)
+        return ''.join(result)
+s = Solution()
+print(s.remove_duplicates("programming"))
+
+# Check if string contains only digits
+class Solution:
+    def only_digits(self, s):
+        if len(s) == 0:
+            return False
+        for char in s:
+            if char < '0' or char > '9':
+                return False
+        return True
+s = Solution()
+print(s.only_digits("12345"))
