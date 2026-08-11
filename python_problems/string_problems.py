@@ -262,3 +262,19 @@ class Solution:
 
 c = Solution()
 print(c.check_substring("python", "thon"))
+
+
+# Advance Level Programs in String
+# Longest Word in a Sentence --> Input: "I love programming in Python" → Output: "programming"
+class Solution:
+    def longest_word(self, text):
+        words = text.split()  # split the sentence into words
+        max_len = 0
+        longest = ""
+        for word in words:
+            if len(word) > max_len:
+                max_len = len(word)
+                longest = word
+        return f"Longest Word in a Given Sentence: '{longest}' \nlength is: {max_len}"
+sol = Solution()
+print(sol.longest_word("I love programming in Python"))
