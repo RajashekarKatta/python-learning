@@ -125,3 +125,36 @@ class Solution:
         return ''.join(s)
 c = Solution()
 print(c.revers_string("king"))
+
+# ount vowels and consonants
+class Solution:
+    def count_vowels_consonants(self, s):
+        vowels = "AEIOUaeiou"
+        v_count = 0     
+        c_count = 0
+        for char in s:
+            if char.isalpha():
+                if char in vowels:
+                    v_count += 1
+                else:
+                    c_count += 1
+        return [v_count, c_count]
+s = Solution()
+print(s.count_vowels_consonants("HelloWorld"))
+
+
+# Encode String with Run-Length Encoding (RLE)   Input: "aaabbcddd" → Output: "a3b2c1d3"
+class Solution:
+    def encode_string(self, text):
+        result = ''
+        count = 1
+        for i in range(1, len(text)):
+            if text[i] == text[i-1]:
+                count += 1
+            else:
+                result += text[i-1] + str(count)
+                count = 1
+        result += text[-1] + str(count)
+        return result
+sol = Solution()
+print(sol.encode_string("aaabbcccd"))
