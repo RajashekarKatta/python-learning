@@ -333,3 +333,17 @@ class Solution:
 
 s = Solution()
 print(s.first_letter_capital_in_each_word("i love programming, welcome to python"))
+
+# Check substring without using in
+class Solution:
+    def check_substring(selr, text, sub):
+        n = len(text)
+        m = len(sub)
+        for i in range(n-m+1):
+            if text[i:i+m] == sub:
+                return True
+        return False
+
+s = Solution()
+print(s.check_substring("python", "hon"))
+
