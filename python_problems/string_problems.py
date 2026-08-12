@@ -173,6 +173,26 @@ class Solution:
 s = Solution()
 print(s.check_anagrams("listen", "silent"))
 
+# Another way to check anagrams
+class Solution:
+    def are_anagrams(self, s1, s2):
+        if len(s1) != len(s2):
+            return False
+        count = {}
+        for char in s1:
+            count[char] = count.get(char, 0) + 1
+        for char in s2:
+            if char not in count:
+                return False
+            count[char] -= 1
+            if count[char] < 0:
+                return False
+        return True
+
+s = Solution()
+print(s.are_anagrams("listen", "silent"))
+    
+
 
 # Remove duplicate characters
 class Solution:
@@ -247,6 +267,7 @@ s = Solution()
 print(s.find_subsquence("Python", "typhoon"))
 
 
+# Checking if substring exists
 class Solution:
     def check_substring(self, s , sub):
         n = len(s)
@@ -278,3 +299,37 @@ class Solution:
         return f"Longest Word in a Given Sentence: '{longest}' \nlength is: {max_len}"
 sol = Solution()
 print(sol.longest_word("I love programming in Python"))
+
+
+# Find Subsequence of two strings
+class Solution:
+    def is_substring(self, substring, main_string):
+        it = iter(main_string)
+        for char in substring:
+            if char not in it:
+                return False
+        return True
+    def find_subsequence(self, s1, s2):
+        longest_match = ''
+        for i in range(len(s1)):
+            for j in range(i, len(s2)):
+                substring = s1[i:j+1]
+                if self.is_substring(substring, s2) and len(substring) > len(longest_match):
+                    longest_match = substring
+        return longest_match
+
+s = Solution()
+print(s.find_subsequence("Python", "typthon"))
+
+
+# # Capitalize First Letter of Each Word (Title Case)
+class Solution:
+    def first_letter_capital_in_each_word(self, text):
+        words = text.split()
+        result = []
+        for word in words:
+            result.append(word.capitalize())
+        return ' '.join(result)
+
+s = Solution()
+print(s.first_letter_capital_in_each_word("i love programming, welcome to python"))
